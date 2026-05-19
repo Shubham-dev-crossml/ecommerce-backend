@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# env files (VERY important)
+.env
+.env.local
+.env.production
+
+# logs
+logs/
+*.log
+
+# runtime files
+dist/
+build/
+
+# OS files
+.DS_Store
+
+# editor
+.vscode/
+.idea/

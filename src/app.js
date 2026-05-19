@@ -5,6 +5,7 @@ const helmet = require('helmet')
 const cors = require('cors')
 const rateLimit = require('express-rate-limit')
 const { errorHandler } = require('./middleware/errorHandler')
+const cookieParser = require('cookie-parser')
 
 const app = express()
 
@@ -12,6 +13,7 @@ app.use(helmet())
 app.use(cors({ origin: env.CLIENT_URL, credentials: true }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser())
 
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 100 })
 app.use(limiter)
@@ -25,6 +27,8 @@ app.get('/api/health', async (req, res) => {
     res.status(503).json({ status: 'db_error' })
   }
 })
+
+app.use('/api/auth', require('./modules/auth/router'))
 
 // routes will be added here phase by phase
 // app.use('/api/auth', require('./modules/auth/router'))
