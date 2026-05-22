@@ -13,4 +13,4 @@ const verifyAccessToken = (token) =>
 const verifyRefreshToken = (token) =>
     jwt.verify(token, env.JWT_REFRESH_SECRET)
 
-module.exports = { signAccessToken, signRefreshToken, verifyAccessToken, verifyRefreshToken}
+module.exports = { signAccessToken, signRefreshToken, verifyAccessToken, verifyRefreshToken }

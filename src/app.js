@@ -29,9 +29,8 @@ app.get('/api/health', async (req, res) => {
 })
 
 app.use('/api/auth', require('./modules/auth/router'))
-
-// routes will be added here phase by phase
-// app.use('/api/auth', require('./modules/auth/router'))
+app.use('/api/categories', require('./modules/categories/router'))
+app.use('/api/products',   require('./modules/products/router'))
 
 app.use(errorHandler)
 
